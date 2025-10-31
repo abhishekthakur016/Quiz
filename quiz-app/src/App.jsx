@@ -1,21 +1,33 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Scroller from "./components/Scroller";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Contests from './pages/Contests'
+import Winners from './pages/Winners'
+import NGO from './pages/NGO'
+import About from './pages/About'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp' // Add this import
+import LiveQuiz from './pages/LiveQuiz'
 
-const App = () => {
+function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <Navbar />
-      <div className="scroller" style={{ paddingTop: "6px" }}>
-        <Scroller />
-      </div>
-       <Home />
-      
-      <Footer/>
+      <main className="pb-20 md:pb-0">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contests" element={<Contests />} />
+          <Route path="/winners" element={<Winners />} />
+          <Route path="/ngo" element={<NGO />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} /> {/* Add this route */}
+          <Route path="/quiz/:contestId" element={<LiveQuiz />} />
+        </Routes>
+      </main>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
