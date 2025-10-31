@@ -1,0 +1,169 @@
+.scroller-container {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #7597de 0%, #2b1055 50%, #1a0a2e 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 16px 0;
+  border-top: 1px solid #ffdd57;
+  border-bottom: 1px solid #ffdd57;
+  white-space: nowrap;
+  margin-top: 100px;
+  height: auto;
+  position: relative;
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 1520px;
+  
+}
+
+.scroller-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scroller-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, #2b1055 0%, transparent 15%, transparent 85%, #2b1055 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.scroll-text {
+  display: inline-block;
+  animation: scrollText 16s linear infinite;
+  padding-left: 100%;
+  position: relative;
+  z-index: 3;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(117, 151, 222, 0.4);
+  letter-spacing: 1.5px;
+  transform: translateZ(20px);
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #ffdd57, #ffffff, #ffdd57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(0px);
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0) translateZ(20px);
+  }
+  100% {
+    transform: translateX(-100%) translateZ(20px);
+  }
+}
+
+/* Glow Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.5),
+      0 0 12px rgba(117, 151, 222, 0.4);
+  }
+  50% {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(117, 151, 222, 0.6),
+      0 0 30px rgba(255, 221, 87, 0.2);
+  }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.scroll-text {
+  animation: scrollText 16s linear infinite, glowPulse 3s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    #ffdd57 0%,
+    #ffffff 25%,
+    #ffdd57 50%,
+    #ffffff 75%,
+    #ffdd57 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced Hover State */
+.scroller-container:hover .scroll-text {
+  animation-play-state: paused;
+  background: linear-gradient(
+    90deg,
+    #ffdd57 0%,
+    #ffffff 20%,
+    #ffdd57 40%,
+    #ffffff 60%,
+    #ffdd57 80%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 20px rgba(255, 221, 87, 0.6),
+    0 0 40px rgba(117, 151, 222, 0.4),
+    2px 2px 6px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0 0 8px rgba(255, 221, 87, 0.5));
+}
+
+/* 3D Perspective on Hover */
+.scroller-container:hover {
+  transform: perspective(800px) rotateX(2deg);
+}
+
+/* Particles/Backdrop Filter (Modern) */
+@supports (backdrop-filter: blur(10px)) {
+  .scroller-container {
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Neon Outline Effect */
+.scroller-container {
+  border-image: linear-gradient(90deg, #ffdd57, #7597de, #ffdd57) 1;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}

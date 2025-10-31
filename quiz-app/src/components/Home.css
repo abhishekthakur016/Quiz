@@ -1,0 +1,39 @@
+.home-section {
+  height: 100vh;
+  background-image: url("/quiz-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  margin-right: 120px;
+  
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px #000;
+}
+.home-content span {
+  color: #ffdd57;
+}
+.home-content p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+.home-content button {
+  background: #ffdd57;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.home-content button:hover {
+  background: #fff176;
+  transform: scale(1.05);
+}
+
